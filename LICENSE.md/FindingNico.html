@@ -10,7 +10,7 @@
                 var cluecontent = cdiff + rdiff;
                 return cluecontent
             }
-            
+
             var C1, C2, C3;
             var treasure;
             $(document).ready(function(){
@@ -50,16 +50,16 @@
                 $(":button").click(function() {
                 	location.reload();
                 });
-          
+
             });
-            
+
         </script>
-        
+
         <title>
         Treasure Hunt
     </title>
         <style>
-        
+
             .bg{
                 background-image:'desktop/background.jpg';
                 height:100%;
@@ -71,7 +71,6 @@
                 text-align:center;
                 font-family:Arial;
                 font-size:48px;
-                /*align-items:center;*/
                 color:white;
             }
             .board {
@@ -80,6 +79,8 @@
                 width:600px;
                 display:flex;
                 flex-direction:row;
+                margin: auto;
+                border-style: solid;
             }
             .row{
                 border:1px white solid;
@@ -91,13 +92,39 @@
                 border:1px white solid;
                 flex:1;
             }
+            .instruction{
+                font-size: 15px;
+            }
+            h1{  
+                margin: 0 15px 15px 15px;
+                padding: 0 15px;
+                font-family: Brush Script MT;
+            }
+            button{
+                background-color: red;
+                color: white;
+                text-align:center;
+                display: inline-block;
+                font-size: 20px;
+                padding: 15px 32px;
+            }
         </style>
     </head>
 
     <body background ="https://vignette.wikia.nocookie.net/steamtradingcards/images/1/15/The_Testament_of_Sherlock_Holmes_Background_Marquis_Room.jpg/revision/latest/scale-to-width-down/1024?cb=20141003015235" height=100%>
-   
-    <b><i>Finding Nico</i></b>
+
+    <h1><b>Finding Nico</b></h1>
     
+        <div class = "instruction">
+            <b><i><u>Instructions:<br>
+            </b></i></u>
+            1. Click any 3 boxes to get clues to find Nico.<br>
+            2. Each clue represents the shortest horizontal/vertical steps from Nico's location. <br>
+            3. Click your guess of where Nico is.<br>
+            4. To restart, click release Nico.<br>
+
+        </div>
+
         <div class = "board">
             <div class = "row">
                 <div class = "box", id = "1"></div>
@@ -135,17 +162,10 @@
                 <div class = "box", id = "25"></div>
             </div>
         </div>
+        <br>
         <div>
         	<button type="button">Click to release Nico</button>
         </div>
-        <div class = "instruction">
-            <b><i><u>Instructions:<br>
-            </b></i></u>
-            1. Click any 3 boxes to get clues to find Nico.<br>
-            2. Each clue represents the shortest horizontal/vertical steps from Nico's location. <br>
-            3. Click your guess of where Nico is.<br>
-            4. To restart, click release Nico.<br>
-
-        </div>
     </body>
 </html>
+
