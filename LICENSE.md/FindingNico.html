@@ -1,171 +1,190 @@
-<html>
-    <head>
-        <script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
-        <script>
-            function generateTreasure(cnumber, tnumber) {
-                var a = cnumber;
-                var b = tnumber;
-                var cdiff = Math.abs(Math.floor((a-1)/5) - Math.floor((b-1)/5));
-                var rdiff = Math.abs(((a-1)%5)-((b-1)%5));
-                var cluecontent = cdiff + rdiff;
-                return cluecontent
-            }
+    <html>
+        <head>
+            <script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+            <script>
+                function generateTreasure(cnumber, tnumber) {
+                    var a = cnumber;
+                    var b = tnumber;
+                    var cdiff = Math.abs(Math.floor((a-1)/5) - Math.floor((b-1)/5));
+                    var rdiff = Math.abs(((a-1)%5)-((b-1)%5));
+                    var cluecontent = cdiff + rdiff;
+                    return cluecontent
+                }
 
-            var C1, C2, C3;
-            var treasure;
-            $(document).ready(function(){
-                $(".box").click(function() {
-                document.getElementById(this.id).style.background = "blue";
-                if (C1 == undefined) {
-                    C1 = this.id;
-                }
-                else if (C1 != this.id && C2 == undefined) {
-                    C2 = this.id;
-                }
-                else if (C1 != this.id && C2 != this.id && C3 == undefined) {
-                    C3 = this.id;
-                    var rand = Math.ceil(Math.random() * 25);
-                    while (rand == C1 || rand == C2 || rand == C3) {
-                        rand = Math.ceil(Math.random() * 25);
+                var C1, C2, C3;
+                var treasure;
+                $(document).ready(function(){
+                    $(".box").click(function() {
+                    document.getElementById(this.id).style.background = "blue";
+                    if (C1 == undefined) {
+                        C1 = this.id;
                     }
-                treasure = rand;
-                // Change the background of treasure tile to treasure.jpg
-                // Change everything else to bomb
-                document.getElementById(C1).innerHTML = generateTreasure(rand, C1);
-                document.getElementById(C2).innerHTML = generateTreasure(rand, C2);
-                document.getElementById(C3).innerHTML = generateTreasure(rand, C3);
-                }
-                else if (treasure == this.id) {
-                    console.log();
-                    alert("THERE HE IS!!!!");
-                	document.getElementById(this.id).style.background = "green";
-                    // location.reload();
-                }
-                else if (treasure != undefined) {
-                    alert("NO SIGN OF HIMM!!!");
-                	document.getElementById(this.id).style.background = "red";
-                    // location.reload();
-                }
+                    else if (C1 != this.id && C2 == undefined) {
+                        C2 = this.id;
+                    }
+                    else if (C1 != this.id && C2 != this.id && C3 == undefined) {
+                        C3 = this.id;
+                        var rand = Math.ceil(Math.random() * 25);
+                        while (rand == C1 || rand == C2 || rand == C3) {
+                            rand = Math.ceil(Math.random() * 25);
+                        }
+                    treasure = rand;
+                    // Change the background of treasure tile to treasure.jpg
+                    // Change everything else to bomb
+                    document.getElementById(C1).innerHTML = generateTreasure(rand, C1);
+                    document.getElementById(C2).innerHTML = generateTreasure(rand, C2);
+                    document.getElementById(C3).innerHTML = generateTreasure(rand, C3);
+                    }
+                    else if (treasure == this.id) {
+                        console.log();
+                        alert("THERE HE IS!!!!");
+                    	document.getElementById(this.id).style.background = "green";
+                    }
+                    else if (treasure != undefined) {
+                        alert("NO SIGN OF HIMM!!!");
+                    	document.getElementById(this.id).style.background = "red";
+                    }
+                    });
+                    $(":button").click(function() {
+                    	location.reload();
+                    });
+
                 });
-                $(":button").click(function() {
-                	location.reload();
-                });
 
-            });
+            </script>
 
-        </script>
+            <title>
+                Treasure Hunt
+            </title>
 
-        <title>
-        Treasure Hunt
-    </title>
-        <style>
+            <style>
 
-            .bg{
-                background-image:'desktop/background.jpg';
-                height:100%;
-                background-position: center;
-                background-repeat:no-repeat;
-                background-size:cover;
-            }
-            body{
-                text-align:center;
-                font-family:Arial;
-                font-size:48px;
-                color:white;
-            }
-            .board {
-                border:1px white solid;
-                height:600px;
-                width:600px;
-                display:flex;
-                flex-direction:row;
-                margin: auto;
-                border-style: solid;
-            }
-            .row{
-                border:1px white solid;
-                flex:1;
-                display:flex;
-                flex-direction:column;
-            }
-            .box{
-                border:1px white solid;
-                flex:1;
-            }
-            .instruction{
-                font-size: 15px;
-            }
-            h1{  
-                margin: 0 15px 15px 15px;
-                padding: 0 15px;
-                font-family: Brush Script MT;
-            }
-            button{
-                background-color: red;
-                color: white;
-                text-align:center;
-                display: inline-block;
-                font-size: 20px;
-                padding: 15px 32px;
-            }
-        </style>
-    </head>
+                .bg{
+                    position: absolute;
+                    background-image: url("https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940");    
+                    background-repeat: no-repeat;
+                    background-size:cover;
 
-    <body background ="https://vignette.wikia.nocookie.net/steamtradingcards/images/1/15/The_Testament_of_Sherlock_Holmes_Background_Marquis_Room.jpg/revision/latest/scale-to-width-down/1024?cb=20141003015235" height=100%>
+                    min-height: 100%;
+                    min-width: 1024px;
 
-    <h1><b>Finding Nico</b></h1>
-    
-        <div class = "instruction">
-            <b><i><u>Instructions:<br>
-            </b></i></u>
-            1. Click any 3 boxes to get clues to find Nico.<br>
-            2. Each clue represents the shortest horizontal/vertical steps from Nico's location. <br>
-            3. Click your guess of where Nico is.<br>
-            4. To restart, click release Nico.<br>
+                    /* Set up proportionate scaling */
+                    width: 100%;
+                    height: auto;
 
-        </div>
+                    /* Set up positioning */
+                    top: 0;
+                    left: 0;
 
-        <div class = "board">
-            <div class = "row">
-                <div class = "box", id = "1"></div>
-                <div class = "box", id = "2"></div>
-                <div class = "box", id = "3"></div>
-                <div class = "box", id = "4"></div>
-                <div class = "box", id = "5"></div>
+
+                }
+
+                @media screen and (max-width: 1024px) { /* Specific to this particular image */
+                .bg {
+                    left: 50%;
+                    margin-left: -512px;   /* 50% */
+                  }
+                }
+
+                body{
+                    text-align:center;
+                    font-family:Arial;
+                    font-size:48px;
+                    color:white;
+                }
+                .board {
+                    border:1px white solid;
+                    height:600px;
+                    width:600px;
+                    display:flex;
+                    flex-direction:row;
+                    margin: auto;
+                    border-style: solid;
+                }
+                .row{
+                    border:1px white solid;
+                    flex:1;
+                    display:flex;
+                    flex-direction:column;
+                }
+                .box{
+                    border:1px white solid;
+                    flex:1;
+                }
+                .instruction{
+                    font-size: 15px;
+                }
+                h1{  
+                    margin: 0 15px 15px 15px;
+                    padding: 0 15px;
+                    font-family: Brush Script MT;
+                }
+                button{
+                    background-color: red;
+                    color: white;
+                    text-align:center;
+                    display: inline-block;
+                    font-size: 20px;
+                    padding: 15px 32px;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class ="bg">
+                <h1><b>Finding Nico</b></h1>
+            
+                <div class = "instruction">
+                    <b><i><u>Instructions:<br>
+                    </b></i></u>
+                    1. Click any 3 boxes to get clues to find Nico.<br>
+                    2. Each clue represents the shortest horizontal/vertical steps from Nico's location. <br>
+                    3. Click your guess of where Nico is.<br>
+                    4. To restart, click release Nico.<br>
+
+                </div>
+
+                <div class = "board">
+                    <div class = "row">
+                        <div class = "box", id = "1"></div>
+                        <div class = "box", id = "2"></div>
+                        <div class = "box", id = "3"></div>
+                        <div class = "box", id = "4"></div>
+                        <div class = "box", id = "5"></div>
+                    </div>
+                    <div class = "row">
+                        <div class = "box", id = "6"></div>
+                        <div class = "box", id = "7"></div>
+                        <div class = "box", id = "8"></div>
+                        <div class = "box", id = "9"></div>
+                        <div class = "box", id = "10"></div>
+                    </div>
+                    <div class = "row">
+                        <div class = "box", id = "11"></div>
+                        <div class = "box", id = "12"></div>
+                        <div class = "box", id = "13"></div>
+                        <div class = "box", id = "14"></div>
+                        <div class = "box", id = "15"></div>
+                    </div>
+                    <div class = "row">
+                        <div class = "box", id = "16"></div>
+                        <div class = "box", id = "17"></div>
+                        <div class = "box", id = "18"></div>
+                        <div class = "box", id = "19"></div>
+                        <div class = "box", id = "20"></div>
+                    </div>
+                    <div class = "row">
+                        <div class = "box", id = "21"></div>
+                        <div class = "box", id = "22"></div>
+                        <div class = "box", id = "23"></div>
+                        <div class = "box", id = "24"></div>
+                        <div class = "box", id = "25"></div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                	<button type="button">Click to release Nico</button>
+                </div>
             </div>
-            <div class = "row">
-                <div class = "box", id = "6"></div>
-                <div class = "box", id = "7"></div>
-                <div class = "box", id = "8"></div>
-                <div class = "box", id = "9"></div>
-                <div class = "box", id = "10"></div>
-            </div>
-            <div class = "row">
-                <div class = "box", id = "11"></div>
-                <div class = "box", id = "12"></div>
-                <div class = "box", id = "13"></div>
-                <div class = "box", id = "14"></div>
-                <div class = "box", id = "15"></div>
-            </div>
-            <div class = "row">
-                <div class = "box", id = "16"></div>
-                <div class = "box", id = "17"></div>
-                <div class = "box", id = "18"></div>
-                <div class = "box", id = "19"></div>
-                <div class = "box", id = "20"></div>
-            </div>
-            <div class = "row">
-                <div class = "box", id = "21"></div>
-                <div class = "box", id = "22"></div>
-                <div class = "box", id = "23"></div>
-                <div class = "box", id = "24"></div>
-                <div class = "box", id = "25"></div>
-            </div>
-        </div>
-        <br>
-        <div>
-        	<button type="button">Click to release Nico</button>
-        </div>
-    </body>
-</html>
-
+        </body>
+    </html>
